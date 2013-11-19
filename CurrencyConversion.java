@@ -72,7 +72,7 @@ public class CurrencyConversion {
 		if (search(currency1).getRatio() == search(currency2).getRatio()) {
 			Conversion = InputAmount;
 		}
-
+		Conversion = formatDecimal(Conversion);
 		return Conversion;
 
 	}
@@ -160,7 +160,7 @@ public class CurrencyConversion {
 	 * Getter for specified currency
 	 * 
 	 * @param currency
-	 * @return spcified currency
+	 * @return specified currency
 	 */
 	public Currency getCurrency(int currency) {
 

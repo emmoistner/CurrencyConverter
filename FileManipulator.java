@@ -2,12 +2,17 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Scanner;
 
+/**
+ * Class designed to handle file processing for CurrencyConversion
+ * 
+ * @author Ethan Moistner
+ * 
+ */
 public class FileManipulator {
 	private ArrayList<String> nameList;
 	private ArrayList<Double> ratioList;
@@ -15,6 +20,10 @@ public class FileManipulator {
 	private String date;
 	private int HMC;
 
+	/**
+	 * constructor
+	 * 
+	 */
 	public FileManipulator() {
 		setDate("0000000");
 		HMC = 0;
@@ -24,6 +33,11 @@ public class FileManipulator {
 
 	}
 
+	/**
+	 * Gets the current date from the computer and formats it to MMddyyyy
+	 * 
+	 * @return current date on the machine
+	 */
 	public String getCurrentDate() {
 		Calendar currentDate = Calendar.getInstance();
 		SimpleDateFormat formatter = new SimpleDateFormat("MMddyyyy");
@@ -33,10 +47,21 @@ public class FileManipulator {
 
 	}
 
+	/**
+	 * writes a file with all the currencies currently in the CurrencyConversion
+	 * class
+	 * 
+	 * @param hmc
+	 *            how many currencies are being exported to file
+	 * @param date
+	 *            current date
+	 * @param currency
+	 *            CurrencyConversion object
+	 */
 	public void fileExport(int hmc, String date, CurrencyConversion currency) {
 		try {
 			FileWriter write = new FileWriter("Currency.txt");
-			write.write(date + System.getProperty( "line.separator" ));
+			write.write(date + System.getProperty("line.separator"));
 			int i = 0;
 			while (i < hmc) {
 				write.write(currency.getCurrency(i).getName()
@@ -55,6 +80,9 @@ public class FileManipulator {
 
 	}
 
+	/**
+	 * scans in currencies and current date and places them into ArrayLists
+	 */
 	public void fileImport() {
 		String Name = "name"; // Used in Scanning file
 		Double Ratio = 1.0; // Used in Scanning file
@@ -95,21 +123,13 @@ public class FileManipulator {
 			for (int i = 0; i < HMC / 3; i++) {
 
 				Name = in.nextLine();
-				System.out.println(Name); // Print out to make sure all
 				nameList.add(Name); // currencies values made it in
 				Ratio = in.nextDouble();
-				System.out.println(Ratio);
 				ratioList.add(Ratio);
 				in.nextLine();
 				Code = in.nextLine();
-				System.out.println(Code);
 				codeList.add(Code);
-
-				// k.addCurrency(Name, Ratio, Code);
 			}
-
-			// k.Print(); // print to make sure currencies are located
-			// the arrayList
 			in.close();
 		} // CLOSE FILE
 		catch (FileNotFoundException e) {
@@ -119,28 +139,59 @@ public class FileManipulator {
 		}
 	}
 
+	/**
+	 * Getter for ArrayList of imported currency names
+	 * 
+	 * @return ArrayList of currency names imported from file
+	 */
 	public ArrayList<String> getNames() {
 		return nameList;
 
 	}
 
+	/**
+	 * Getter for ArrayList of imported currency ratios
+	 * 
+	 * @return ArrayList of currency ratios imported from file
+	 */
 	public ArrayList<Double> getRatios() {
 		return ratioList;
 
 	}
 
+	/**
+	 * Getter for ArrayList of imported currency Code
+	 * 
+	 * @return ArrayList of currency codes imported from file
+	 */
 	public ArrayList<String> getCodes() {
 		return codeList;
 	}
 
+	/**
+	 * setter for the date
+	 * 
+	 * @param date
+	 *            new date
+	 */
 	public void setDate(String date) {
 		this.date = date;
 	}
 
+	/**
+	 * Getter for current date
+	 * 
+	 * @return current date
+	 */
 	public String getDate() {
 		return date;
 	}
 
+	/**
+	 * Getter for current how many currencies are in a file
+	 * 
+	 * @return how many currencies are in a file
+	 */
 	public int getHMC() {
 		return HMC / 3;
 

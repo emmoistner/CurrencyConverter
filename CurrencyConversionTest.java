@@ -37,7 +37,7 @@ public class CurrencyConversionTest {
 		newInstance.addCurrency("US Dollar", 1.0, "USD");
 		newInstance.addCurrency("Euro", 0.756264, "EUR");
 		Double actual = newInstance.convert(50.00, "US Dollar", "Euro");
-		Double expected = 37.8132;
+		Double expected = 37.81;
 		assertEquals(actual, expected);
 	}
 

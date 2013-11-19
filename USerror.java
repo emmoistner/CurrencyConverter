@@ -3,19 +3,23 @@ import java.awt.GridBagLayout;
 import java.awt.Label;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
-
+/**
+ * Displays a GUI when called when a user tries to remove the vital US Dollar
+ * from the currency ArrayList
+ * 
+ * @author Ethan Moistner
+ * 
+ */
 public class USerror {
 	JFrame error = new JFrame(); // creates frame
 	JButton okayButton = new JButton("Okay");
-	Label instructions = new Label(
-			"US Dollar cannot be removed from the list");
+	Label instructions = new Label("US Dollar cannot be removed from the list");
 
 	public void errorGui() {
-		
+
 		error.add(instructions);
 
 		error.setSize(400, 200);

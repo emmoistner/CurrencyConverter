@@ -3,11 +3,15 @@ import java.awt.GridBagLayout;
 import java.awt.Label;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
-
-
+/**
+ * Displays a JFrame when a user tries to add incorrect values and caught
+ * by the try catch
+ * 
+ * @author Ethan Moistner
+ *
+ */
 public class addErrorGui {
 	JFrame error = new JFrame(); // creates frame
 	JButton okayButton = new JButton("Okay");
@@ -15,7 +19,7 @@ public class addErrorGui {
 			"Please Input a valid Exchange ratio compared to the US Dollar. Example 24.313912:");
 
 	public void errorGui() {
-		
+
 		error.add(instructions);
 
 		error.setSize(600, 200);
@@ -48,7 +52,5 @@ public class addErrorGui {
 		return;
 
 	}
-
-
 
 }

@@ -1,22 +1,24 @@
 /**
  * 
- * @author Matt Mandery
+ * @author Matt Mandery and Ethan Moistner
  *
  */
+import java.awt.Button;
+import java.awt.Color;
+import java.awt.GridLayout;
+import java.awt.Label;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JPasswordField;
-import javax.swing.JTextField;
-import java.awt.*;
 import java.util.Arrays;
-import java.util.Scanner;
-import javax.swing.*;
 
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
 
+/**
+ * This Class paints the GUI and checks to make sure the password entered is
+ * correct. If it is Client.manager() is called
+ */
 public class Manager extends User {
 	int choice;
 	private static String passInput;
@@ -29,14 +31,15 @@ public class Manager extends User {
 	static JPasswordField passwordField = new JPasswordField(200); // creates
 																	// text
 																	// field
-	/*
-	 * This Class paints the GUI and checks to make sure the password entered is correct.  If it is Client.manager() is called
-	 */
+
 	static Label error = new Label(
-			"That is not the correct password, please try again"); 
+			"That is not the correct password, please try again");
 
+	/**
+	 * This method paints the Manager GUI
+	 */
 	public void password() {
-
+		// sets frame size
 		password.setSize(400, 400);
 
 		// closes if exit button is pressed
@@ -62,46 +65,35 @@ public class Manager extends User {
 		password.repaint();
 		passwordField.setEchoChar('*');
 
-		/*
-		 * This method paints the Manager GUI
-		 */
 	}
-	
 
 	class AddSubmitListener implements ActionListener {
 
-		@Override
-    	//TO DO: fix it so that these methods don't run twice if jump to user and back. 
-    		
-			
-    	    
-    		
-    	    public void actionPerformed(ActionEvent e) {
-    	        String cmd = e.getActionCommand();
+		public void actionPerformed(ActionEvent e) {
 
-    	            char [] passInput = passwordField.getPassword();
-    	            if (isPasswordCorrect(passInput)) {
-    	                password.setVisible(false);
-    	                Client.manager();
-    	            } else {
-    	                JOptionPane.showMessageDialog(frame,
-    	                    "Invalid password. Try again.",
-    	                    "Error Message",
-    	                    JOptionPane.ERROR_MESSAGE);
-    	            }
+			char[] passInput = passwordField.getPassword();
+			if (isPasswordCorrect(passInput)) {
+				password.setVisible(false);
+				Client.manager();
+			} else {
+				JOptionPane.showMessageDialog(frame,
+						"Invalid password. Try again.", "Error Message",
+						JOptionPane.ERROR_MESSAGE);
+			}
 
-    	            //Zero out the possible password, for security.
-    	            Arrays.fill(passInput, '0');
+			// Zero out the possible password, for security.
+			Arrays.fill(passInput, '0');
 
-    	            passwordField.selectAll();
-    			
-    			
-    		}
-    		
+			passwordField.selectAll();
+
+		}
+
 	}
-	
-	
 
+	/**
+	 * This method checks to make sure input from user is the correct password.
+	 * Also added security by erasing password containing variable
+	 */
 	private boolean isPasswordCorrect(char[] input) {
 		boolean isCorrect = true;
 		char[] correctPassword = { 'p', 'a', 's', 's', 'w', 'o', 'r', 'd' };
@@ -116,23 +108,20 @@ public class Manager extends User {
 		Arrays.fill(correctPassword, '0');
 
 		return isCorrect;
-		/*
-		 * This method checks to make sure input from user is the correct password
-		 */
+
 	}
 
+	/**
+	 * This accesses main menu GUI where conversions can be performed.
+	 */
 	static class MenuSubmitListener implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
 			password.setVisible(false);
 			User.frame.setVisible(true);
 
 		}
-		/*
-		 * This accesses main menu GUI where conversions can be preformed. 
-		 */
 
-	}}
-
+	}
+}

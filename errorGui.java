@@ -3,12 +3,16 @@ import java.awt.GridBagLayout;
 import java.awt.Label;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
 
-
+/**
+ * Displays a JFrame when a user tries to input a string instead of Double value
+ * in the convert method
+ * 
+ * @author Ethan Moistner
+ * 
+ */
 public class errorGui {
 	JFrame error = new JFrame(); // creates frame
 	JButton okayButton = new JButton("Okay");
@@ -16,7 +20,7 @@ public class errorGui {
 			"Please Input a valid amount of currency. Example 12.31:");
 
 	public void errorGui() {
-		
+
 		error.add(instructions);
 
 		error.setSize(400, 200);
@@ -51,6 +55,5 @@ public class errorGui {
 		return;
 
 	}
-
 
 }
